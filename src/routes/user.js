@@ -10,5 +10,4 @@ app.post(
 app.post("/user/signin", signInValidator, userSignIn)
 
 app.get("/user/self", validateToken, getSelf)
-
 module.exports = app

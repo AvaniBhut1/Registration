@@ -3,8 +3,8 @@ const { createJWT } = require('../middleware/auth')
 
 module.exports.userSignUp = async (req, res) => {
     const body = req.body
-    await createUser({ name: body.name, email: body.email, password: body.password })
-    const token = await createJWT({ email: body.email, name: body.name })
+    await createUser({ username: body.username, email: body.email, password: body.password,phone:body.phone,location:body.location,country:body.country,occupation:body.occupation,isvarified:body.isvarified})
+    const token = await createJWT({ email: body.email, username: body.username ,phone:body.phone,password:body.password,location:body.location,country:body.country,occupation:body.occupation,isvarified:body.isvarified})
     res.status(200).send({ message: 'user created successfully', token })
 }
 
@@ -24,3 +24,8 @@ module.exports.getSelf = async (req, res) => {
     const data = await getUserByEmail(email)
     res.send(data)
 }
+
+
+
+
+
