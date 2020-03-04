@@ -1,10 +1,10 @@
 const jwt = require('jsonwebtoken')
 module.exports.createJWT = (user) => {
     console.log('asdfasdf')
-    return jwt.sign(user, process.env.JWTSECRET,{expiresIn:'2m'})
+    return jwt.sign(user, process.env.JWTSECRET,{expiresIn:'5m'})
 }
 module.exports.validateToken = (req, res, next) => {
-    try {
+    try{
         console.log(req.headers)
         const decoded = jwt.verify(req.headers.authorization, process.env.JWTSECRET)
         console.log(decoded)
@@ -14,6 +14,17 @@ module.exports.validateToken = (req, res, next) => {
         res.status(401).send({ message: 'invalid token' })
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
