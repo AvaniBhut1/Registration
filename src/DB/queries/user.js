@@ -2,8 +2,8 @@ const { User } = require('../models/user')
 const md5=require('md5')
 module.exports.createUser = (body) => {
     const user = new User({
-        username: body.name,
-        password:body.password=md5(body.password),
+        username: body.username,
+        password:body.password,
         email: body.email,
         phone:body.phone,
         location:body.location,
@@ -11,8 +11,7 @@ module.exports.createUser = (body) => {
         occupation:body.occupation,
         isVarified:body.isVarified,
         phone:body.phone,
-
-
+    
     })
     return user.save()
 }
