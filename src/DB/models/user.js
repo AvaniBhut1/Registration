@@ -1,7 +1,6 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 const {OCCUPATION} = require('../../constants')
-
 const User = mongoose.model('User', new mongoose.Schema({
     email: {
         type: String,
@@ -41,8 +40,7 @@ const User = mongoose.model('User', new mongoose.Schema({
         required: true,
         minlength: 5,
         maxlength: 1024,
-        
-    },
+     },
 },{timestamps:true}));
 function validateUser(user){
     const schema = {
@@ -53,7 +51,6 @@ function validateUser(user){
     };
     return Joi.validate(user, schema);
 }
-
 exports.User = User;
 exports.validate = validateUser;
 
