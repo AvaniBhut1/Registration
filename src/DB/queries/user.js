@@ -11,12 +11,10 @@ module.exports.createUser = (body) => {
         occupation:body.occupation,
         isVarified:body.isVarified,
         phone:body.phone,
-    
     })
     return user.save()
 }
-
-
 module.exports.getAllUser = () => User.find({})
-
 module.exports.getUserByEmail = (email) => User.findOne({ email:email })
+module.exports.veryfyUser=(email)=>user.updateOne({email},{isVarified:true})
+

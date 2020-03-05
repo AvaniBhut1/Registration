@@ -1,5 +1,4 @@
 const { getUserByEmail } = require('../DB/queries/user')
-
 module.exports.signUpValidator = async (req, res, next) => {
     const { username, email, password,phone, location,country,occupation,isVarified} = req.body
     let isError = false
@@ -34,6 +33,24 @@ module.exports.signUpValidator = async (req, res, next) => {
 }
 
 module.exports.signInValidator = async (req, res, next) => {
+    const { email, password } = req.body
+    let isError = false
+    const error = []
+    if (!email) {
+        isError = true
+        error.push({ message: 'email is required' })
+    }
+    if (!password) {
+        isError = true
+        error.push({ message: 'password is required' })
+    }
+    if (isError) {
+        res.status(404).send(error)
+        return
+    }
+    next()
+}
+module.exports.emailValidator = async (req, res, next) => {
     const { email, password } = req.body
     let isError = false
     const error = []
